@@ -1,0 +1,26 @@
+<form [formGroup]="formularioProductoEditar" class="formulario p-3 ">
+
+    
+    
+    <div class="form-group pb-3">
+        <label class="control-label pb-1">Codigo</label>
+        <input type="text"  name="username" placeholder="Ingrese un codigo" class="form-control" required autofocus="autofocus" formControlName="codigo" disabled/>
+    </div>
+    <div class="form-group pb-3">
+        <label class="control-label pb-1" id="nombre" >Nombre</label>
+        <input type="text"   placeholder="Ingrese un nombre de producto" class="form-control" required autofocus="autofocus" formControlName="nombre"/>
+    </div>
+    <div class="form-group pb-3">
+        <label class="control-label pb-1">Precio</label>
+        <input type="text"   placeholder="Ingrese un precio" class="form-control" required autofocus="autofocus" formControlName="precio"/>
+    </div>
+    <div class="form-group pb-3">
+        <label class="control-label pb-1">Stock</label>
+        <input type="text"   placeholder="Ingrese el stock del producto" class="form-control" required autofocus="autofocus" formControlName="stock"/>
+    </div>
+    <div class="form-group">
+        <div class="row pt-3 mx-0">
+            <button type="submit" (click)="guardarEdicion()" class="btn btn-success btn-block">Actualizar</button>
+        </div>  
+    </div>
+</form>

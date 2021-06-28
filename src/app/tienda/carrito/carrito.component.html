@@ -1,0 +1,108 @@
+
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">
+  
+        
+        <div class="d-flex justify-content-between">
+            <!-- <span><button (click)="nuevoItem()" class="btn btn-success">Nuevo Producto</button></span>
+            <span *ngIf="mostrarFormulario"><button (click)="cancelar()" class="btn btn-danger">Cancelar</button></span> -->
+        </div>
+        <br>
+        <div>
+            <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Codigo</th>
+                    <th scope="col">Imagen</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Opción</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  
+                  <tr *ngFor="let resumen of carritoResumen">
+                    <td scope="row">{{resumen.producto.codigo}}</td>
+                    <td scope="row" >
+                      <img class="card-img-top" [src]="resumen.producto.imagen" alt="">
+                    </td>
+                    <td scope="row">{{resumen.producto.nombre}}</td>
+                    <td scope="row">{{resumen.producto.precio}}</td>
+                    <td scope="row">
+                   
+                      <input type="text" class="form-control" [value]="resumen.cantidad">
+                    </td>
+                    <td scope="row">{{resumen.cantidad * resumen.producto.precio | number}}$</td>
+                    <td scope="row" >
+                    
+                      <button class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Borrar Todos"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                      </svg></button>
+                    </td>
+
+                    <!--MODAL PARA ELIMINAR -->
+                    <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="myModalDelete">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h4 class="modal-title" id="exampleModalLabel">Eliminar Producto</h4>
+                            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModalFormEdit()"> 
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                    
+                            -->
+                          </div>
+                          <div class="modal-body">
+                            <!-- FORMULARIO PARA AGREGAR UN PRODUCTO A LA VITRINA -->
+                            <p>¿Esta seguro que desea borrar el producto? <strong>(Esta operación es irreversible)</strong></p>
+                          </div>
+                          <div class="modal-footer ">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal"  (click)="closeModalFormDelete()">Cancelar</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal"  (click)="delete(producto)">Borrar</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </tr>
+
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td> </td>
+                    <td align="center"><strong>Total</strong></td>
+                    <td align="center"><strong>{{total | number}}$</strong></td>
+                  </tr>
+                  
+                </tbody>
+               
+              </table>
+              <span class="d-flex justify-content-center" *ngIf="carritoResumen?.length == 0"><strong>SIN DATOS</strong></span>
+              <div >
+                <div class=" pt-3 mx-0  row">
+                    <div class="col-md-6 d-flex justify-content-start">
+                      <button type="submit"  class="btn btn-danger" (click)="vaciarCarrito()">Vaciar Carrito</button>
+                    
+                    </div>
+                    <div class="col-md-6 d-flex justify-content-end">
+                      <button type="submit"  class="btn btn-primary " (click)="pagar()">Confirmar y Pagar</button>
+                    
+                    </div>
+                  </div>
+              </div>
+        </div>
+      </div>
+      <!-- <div class="col-md-6" *ngIf="mostrarFormulario">
+  
+        <h3>Nuevo producto</h3>
+        <hr>
+        <app-formulario-productos (emisor)="receptor($event)"></app-formulario-productos>
+      </div> -->
+    </div>
+</div>
+
+

@@ -1,0 +1,193 @@
+<div>
+    <div class="row">
+        <div class="col-md-12">
+            <img src="assets/wallpaper1.jpg"  class="img-responsive fit-image" alt="">
+            <h1 class="centered">TECNOCENTER</h1>
+            <h3 class="centered2">Tu tienda digital</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <!-- COMPONENTE GESTION PRODUCTOS  -->
+            
+        </div>
+        
+    </div>
+</div>
+<br>
+<div class="container" (window:scroll)="doSomethingOnScroll($event)" >
+    <div class="row" >
+        <h4>Tienda</h4>
+        <hr>
+        <div class="col-md-8">
+
+            <!-- BUSQUEDA DE PRODUCTOS POR PALABRA CLAVE -->
+            <div class="card-hov mb-2" [ngStyle]="sticky" style="height: 70px;">
+                <div class="card-body">
+                    
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                            <form >
+                                <div class="input-group ">
+                                
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Filtrar</span>
+                                </div>
+                                
+                                <input type="text" class="form-control"  [(ngModel)]="data" name="data" (ngModelChange)="modelChanged($event)" placeholder="Palabra Clave/Coincidencia">
+                                
+                                
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-6 d-flex flex-row-reverse" >
+                        <span></span>
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                            <li class="page-item"><a class="page-link" >Anterior</a></li>
+                            <li class="page-item"><a class="page-link" >1</a></li>
+                            <li class="page-item"><a class="page-link" >2</a></li>
+                            <li class="page-item"><a class="page-link" >3</a></li>
+                            <li class="page-item"><a class="page-link" >Siguiente</a></li>
+                            </ul>
+                        </nav>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div >
+                <ul class="list-group list-group-flush">
+                <!-- lista de productos -->
+                <li class="list-group-item" *ngFor="let producto of productosVitrina" >
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-3 d-flex align-items-stretch">
+                                <div class="card" >
+                                    <div class="card-body">
+                                    <img class="card-img-top"  [src]="producto.imagen" alt="Card image cap">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="card" >
+                                    <div class="card-body">
+                                    <h5 class="card-title" [id]="'producto'+producto.codigo">{{producto.nombre}}</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">Stock: {{producto.stock}} unidades</h6>
+                                    <p class="card-text">Codigo: {{producto.codigo}}</p>
+                                    <div class="container-fluid p-0">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <strong><p style="text-align: right;" [id]="'precio'+producto.codigo"> CLP {{producto.precio | number}} $</p></strong>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-9">
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="input-group ">
+                                                        <div class="input-group-prepend">
+                                                        <button class="btn btn-outline-secondary" style="z-index: 0;"  type="button" (click)="quitar(producto)">-</button>
+                                                    </div>
+                                                    <input type="number"  class="form-control" disabled aria-describedby="basic-addon1" value="0" [id]="'valor'+producto.codigo" >
+                                                    <div class="input-group-prepend">
+                                                        <button class="btn btn-outline-secondary" style="z-index: 0;" type="button" (click)="agregar(producto)">+</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- CARRITO DE COMPRAS -->
+        <div class="col-md-4">
+            <!-- CARRITO DE COMPRAS -->
+            
+            <div class="card-hov" id="carrito" [ngStyle]="sticky">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <div class="card" >
+                    <div class="card-body">
+                        <h5 class="card-title">Carrito de compras</h5>
+                        <!-- FILA POR CADA PRODUCTO AGREGADO -->
+                            <div class="container px-0" id="canastaContainer">
+                                <div class="row" *ngFor="let producto of carrito"> 
+                                    <div class="col-md-7" id="canastaProductosNombre">
+                                        <p class="card-text mb-1" >{{producto.nombre}}</p>
+                                    </div>
+                                    <div class="col-md-5" id="canastaProductosPrecio">
+                                        <p class="card-text mb-1" style="text-align: right;" >CLP {{producto.precio | number}} $</p>
+                                    </div>
+                                </div>
+                            
+                            </div>
+                        <!-- SECCION DE PRECIO TOTAL -->
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <p class="card-text mb-1">IVA (19%)</p>
+                                    
+                                </div>
+                                <div class="col-md-5">
+                                    <p class="card-text mb-1" style="text-align: right;" id="subtotal">CLP {{subTotalIVA | number }} $</p>
+                                </div>
+                                
+                            </div>
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <p class="card-text mb-1">Subtotal</p>
+                                    
+                                </div>
+                                <div class="col-md-5">
+                                    <p class="card-text mb-1" style="text-align: right;" id="subtotal">CLP {{subtotal | number}} $</p>
+                                </div>
+                                
+                            </div>
+                        <!-- BOTON DE CONFIRMACION DE CARRITO -->
+                            <form >
+                                <input hidden type="hidden" />
+                                <div class="row pt-3">
+                                    <button type="button" class="btn btn-success btn-block" (click)="verCarrito()">Ver carrito</button>
+                                </div>
+                            </form>
+                    </div>
+                    </div>
+                </li>
+            </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade bd-example-modal-lg"  tabindex="-1" role="document" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="carritoModal" >
+    <div class="modal-dialog" role="document" style="display:table;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalLabel">Resumen Carrito de compras</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeCarritoModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- FORMULARIO PARA AGREGAR UN PRODUCTO A LA VITRINA -->
+          <div>
+            <app-carrito *ngIf="carritoResume" (emisorPago)="receptorPago($event)"></app-carrito>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
