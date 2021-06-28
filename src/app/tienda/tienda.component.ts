@@ -24,12 +24,17 @@ export class TiendaComponent implements OnInit {
   carrito:Array<Producto>;
   data:string = "";
   carritoResume = false;
-  page = 1;
-  pageSize =2;
+  pageOfItems: Array<Producto>;
+
 
   constructor(private bodegaService:BodegaService, private carritoService:CarritoService,@Inject(DOCUMENT) document,public iziToast: Ng2IzitoastService,private router:Router) { 
     this.productosVitrina = bodegaService.productosVitrina;
     this.carrito = carritoService.carrito;
+  }
+
+  onChangePage(pageOfItems: Array<Producto>) {
+      // update current page of items
+      this.pageOfItems = pageOfItems;
   }
 
   ngOnInit(){

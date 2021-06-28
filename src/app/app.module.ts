@@ -1,5 +1,6 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Ng2IziToastModule } from 'ng2-izitoast'
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
@@ -9,8 +10,6 @@ import { ProductosComponent } from './productos/productos.component';
 import { FormularioProductoComponent } from './productos/formulario-producto/formulario-producto.component';
 import { EditarProductoComponent } from './productos/editar-producto/editar-producto.component';
 import { ListarComponent } from './productos/listar/listar.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ModalContentComponent } from './productos/modal/modal-content.component';
 import { TiendaComponent } from './tienda/tienda.component';
 
 // servicios
@@ -19,7 +18,6 @@ import { CarritoService } from 'src/services/carrito.service';
 import { CarritoComponent } from './tienda/carrito/carrito.component';
 import { FormularioPagoComponent } from './tienda/formulario-pago/formulario-pago.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,19 +25,19 @@ import { FormularioPagoComponent } from './tienda/formulario-pago/formulario-pag
     FormularioProductoComponent,
     EditarProductoComponent,
     ListarComponent,
-    ModalContentComponent,
     TiendaComponent,
     CarritoComponent,
-    FormularioPagoComponent
+    FormularioPagoComponent,
+    
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     Ng2IziToastModule,
-    NgbModule,
     AppRoutingModule,
-    SweetAlert2Module.forRoot()
+    SweetAlert2Module.forRoot(),
+    
   ],
   providers: [BodegaService,CarritoService],
   bootstrap: [AppComponent]

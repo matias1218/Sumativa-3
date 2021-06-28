@@ -44,14 +44,7 @@
                         <div class="col-md-6 d-flex flex-row-reverse" >
                         <span></span>
                         
-                        <div style="margin:20px;">
-                            <table>
-                               <tr *ngFor="let item of productosVitrina | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
-                                 
-                               </tr>
-                            </table>
-                            <ngb-pagination [collectionSize]="productosVitrina.length" [(page)]="page" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
-                        </div>
+                     
 
                         </div>
                         </div>
