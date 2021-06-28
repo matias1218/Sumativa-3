@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AutenticacionService } from 'src/services/autenticacion.service';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +10,10 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'sumativa2';
 
+  routers:any;
+  constructor(private router: Router,private auth:AutenticacionService){
+    this.routers = router;
+  }
 
   vistaSelected = true;
   
@@ -18,5 +24,9 @@ export class AppComponent {
   }
   tienda(){
     this.vistaSelected = false;
+  }
+  cerrarSesion(){
+    this.auth.logout();
+    this.router.navigate(['/']);
   }
 }

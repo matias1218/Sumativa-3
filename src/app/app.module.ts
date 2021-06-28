@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Ng2IziToastModule } from 'ng2-izitoast'
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
@@ -17,6 +17,7 @@ import { BodegaService } from '../services/bodega.service';
 import { CarritoService } from 'src/services/carrito.service';
 import { CarritoComponent } from './tienda/carrito/carrito.component';
 import { FormularioPagoComponent } from './tienda/formulario-pago/formulario-pago.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { FormularioPagoComponent } from './tienda/formulario-pago/formulario-pag
     TiendaComponent,
     CarritoComponent,
     FormularioPagoComponent,
+    LoginComponent,
     
   ],
   imports: [
@@ -37,7 +39,7 @@ import { FormularioPagoComponent } from './tienda/formulario-pago/formulario-pag
     Ng2IziToastModule,
     AppRoutingModule,
     SweetAlert2Module.forRoot(),
-    
+    NgxPaginationModule
   ],
   providers: [BodegaService,CarritoService],
   bootstrap: [AppComponent]

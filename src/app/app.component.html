@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light" >
+<nav class="navbar navbar-expand-lg navbar-light bg-light" *ngIf="routers.url != '/'">
   <a class="navbar-brand" href="#">
       <img src="https://toppng.com/uploads/preview/technology-icon-orange-information-technology-icon-115535310117amjuxxw3e.png" width="30" height="30" class="d-inline-block align-top" alt="">
       TecnoCenter
@@ -11,6 +11,15 @@
       <li class="nav-item active">
         <a class="nav-link" type="button" routerLink="/tienda">Tienda</a>
       </li>
+    </ul>
+  </div>
+
+  <div  id="navbarSupportedContent2">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link active" type="button" (click)="cerrarSesion()">Cerrar Sesión</a>
+      </li>
+      
     </ul>
   </div>
 </nav>

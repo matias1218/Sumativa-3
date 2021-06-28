@@ -25,7 +25,7 @@ export class TiendaComponent implements OnInit {
   data:string = "";
   carritoResume = false;
   pageOfItems: Array<Producto>;
-
+  p = 1;
 
   constructor(private bodegaService:BodegaService, private carritoService:CarritoService,@Inject(DOCUMENT) document,public iziToast: Ng2IzitoastService,private router:Router) { 
     this.productosVitrina = bodegaService.productosVitrina;

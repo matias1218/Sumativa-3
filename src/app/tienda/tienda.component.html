@@ -31,20 +31,20 @@
                             <form >
                                 <div class="input-group ">
                                 
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">Filtrar</span>
-                                </div>
-                                
-                                <input type="text" class="form-control"  [(ngModel)]="data" name="data" (ngModelChange)="modelChanged($event)" placeholder="Palabra Clave/Coincidencia">
-                                
-                                
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">Filtrar</span>
+                                    </div>
+                                    
+                                    <input type="text" class="form-control"  [(ngModel)]="data" name="data" (ngModelChange)="modelChanged($event)" placeholder="Palabra Clave/Coincidencia">
                                 </div>
                             </form>
                         </div>
                         <div class="col-md-6 d-flex flex-row-reverse" >
                         <span></span>
                         
-                     
+                        <div id="pagination">
+                            <pagination-controls (pageChange)="p=$event"></pagination-controls>
+                        </div>
 
                         </div>
                         </div>
@@ -56,7 +56,7 @@
             <div >
                 <ul class="list-group list-group-flush">
                 <!-- lista de productos -->
-                <li class="list-group-item" *ngFor="let producto of productosVitrina" >
+                <li class="list-group-item" *ngFor="let producto of productosVitrina | paginate:{itemsPerPage: 5, currentPage:p}" >
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-3 d-flex align-items-stretch">

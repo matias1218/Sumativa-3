@@ -33,7 +33,7 @@
                     <td scope="row">{{resumen.producto.precio}}</td>
                     <td scope="row">
                    
-                      <input type="text" class="form-control" [value]="resumen.cantidad">
+                      <input type="text" class="form-control" [value]="resumen.cantidad" disabled>
                     </td>
                     <td scope="row">{{resumen.cantidad * resumen.producto.precio | number}}$</td>
                     <td scope="row" >

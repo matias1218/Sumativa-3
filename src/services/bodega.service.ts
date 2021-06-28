@@ -38,6 +38,34 @@ export class BodegaService {
     producto4.stock = 402;
     producto4.imagen = "https://falabella.scene7.com/is/image/FalabellaCO/4212149_1?wid=800&hei=800&qlt=70";
     this.productosVitrina.push(producto4);
+    let producto5 = new Producto();
+    producto5.codigo = 2123;
+    producto5.nombre = "Iphone X";
+    producto5.precio = 500000;
+    producto5.stock = 55;
+    producto5.imagen = "https://falabella.scene7.com/is/image/FalabellaCO/4212149_1?wid=800&hei=800&qlt=70";
+    this.productosVitrina.push(producto5);
+    let producto6 = new Producto();
+    producto6.codigo = 3234;
+    producto6.nombre = "Xiaomi Redmi Note 9";
+    producto6.precio = 350000;
+    producto6.stock = 34;
+    producto6.imagen = "https://falabella.scene7.com/is/image/FalabellaCO/4212149_1?wid=800&hei=800&qlt=70";
+    this.productosVitrina.push(producto6);
+    let producto7 = new Producto();
+    producto7.codigo = 7887;
+    producto7.nombre = "HTC ONE Next";
+    producto7.precio = 200000;
+    producto7.stock = 43;
+    producto7.imagen = "https://falabella.scene7.com/is/image/FalabellaCO/4212149_1?wid=800&hei=800&qlt=70";
+    this.productosVitrina.push(producto7);
+    let producto8 = new Producto();
+    producto8.codigo = 7979;
+    producto8.nombre = "Xperia Mini";
+    producto8.precio = 350990;
+    producto8.stock = 33;
+    producto8.imagen = "https://falabella.scene7.com/is/image/FalabellaCO/4212149_1?wid=800&hei=800&qlt=70";
+    this.productosVitrina.push(producto8);
   }
 
   editarProducto(prod:FormGroup){
