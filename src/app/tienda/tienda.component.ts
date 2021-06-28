@@ -24,6 +24,8 @@ export class TiendaComponent implements OnInit {
   carrito:Array<Producto>;
   data:string = "";
   carritoResume = false;
+  page = 1;
+  pageSize =2;
 
   constructor(private bodegaService:BodegaService, private carritoService:CarritoService,@Inject(DOCUMENT) document,public iziToast: Ng2IzitoastService,private router:Router) { 
     this.productosVitrina = bodegaService.productosVitrina;
@@ -35,6 +37,7 @@ export class TiendaComponent implements OnInit {
     this.carrito = this.carritoService.carrito;
     this.actualizarSubTotal();
   }
+
 
   // increiblemente sin esta funcion sirve igual (pero el sticky debe estar declarado arriba como sale en el if)
   @HostListener("window:scroll", ['$event'])

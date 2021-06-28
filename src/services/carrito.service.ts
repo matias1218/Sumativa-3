@@ -16,6 +16,35 @@ export class CarritoService {
     this.carrito.splice(0,this.carrito.length);
   }
 
+  borrar(resumen:DaoCarrito){
+
+    do {
+      const index = this.carritoResumen.indexOf(resumen);
+      if (index > -1) {
+        this.carritoResumen.splice(index, 1);
+      }
+    } while (this.carritoResumen.includes(resumen));
+    do {
+      const index = this.carrito.indexOf(resumen.producto);
+      if (index > -1) {
+        this.carrito.splice(index, 1);
+      }
+    } while (this.carrito.includes(resumen.producto));
+    //this.carritoResumen = this.carritoResumen.filter((res:DaoCarrito) => res.producto.codigo != resumen.producto.codigo);
+    //this.carrito = this.carrito.filter((prod:Producto) => prod.codigo != resumen.producto.codigo);
+    
+    console.log(this.carritoResumen);
+    this.actualizarTotal();
+    
+  }
+
+  actualizarTotal(){
+    this.total = 0;
+    this.carritoResumen.forEach(element => {
+      this.total += this.total + element.cantidad*element.producto.precio;
+      console.log("total en service"+this.total);
+    });
+  }
   getResumen(){
     this.total = 0;
     this.carritoResumen.splice(0,this.carritoResumen.length)

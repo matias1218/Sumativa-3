@@ -43,15 +43,16 @@
                         </div>
                         <div class="col-md-6 d-flex flex-row-reverse" >
                         <span></span>
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination">
-                            <li class="page-item"><a class="page-link" >Anterior</a></li>
-                            <li class="page-item"><a class="page-link" >1</a></li>
-                            <li class="page-item"><a class="page-link" >2</a></li>
-                            <li class="page-item"><a class="page-link" >3</a></li>
-                            <li class="page-item"><a class="page-link" >Siguiente</a></li>
-                            </ul>
-                        </nav>
+                        
+                        <div style="margin:20px;">
+                            <table>
+                               <tr *ngFor="let item of productosVitrina | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+                                 
+                               </tr>
+                            </table>
+                            <ngb-pagination [collectionSize]="productosVitrina.length" [(page)]="page" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
+                        </div>
+
                         </div>
                         </div>
                     </div>
@@ -183,7 +184,7 @@
         <div class="modal-body">
           <!-- FORMULARIO PARA AGREGAR UN PRODUCTO A LA VITRINA -->
           <div>
-            <app-carrito *ngIf="carritoResume" (emisorPago)="receptorPago($event)"></app-carrito>
+            <app-carrito *ngIf="carritoResume" [total]="subtotal" (emisorPago)="receptorPago($event)"></app-carrito>
           </div>
         </div>
         
